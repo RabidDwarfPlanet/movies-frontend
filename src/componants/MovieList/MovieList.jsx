@@ -1,21 +1,16 @@
-import MovieInfo from "./MovieInfo/MovieInfo";
+import MovieItem from "../MovieItem/MovieItem";
 
 const MovieList = ({}) => {
-    const selectedMovie = [{
-        title:'Princess Bride',
-        runningTime:13, 
-        genre:'Romantic Genre'
-    }];
-    const movieItems = selectedMovie.map((movie) => <MovieInfo movieobj={movie} />)
-    return ( <div>
-        <h4>My Movies</h4>
-        <div>
-            <div>
-                {movieItems}
-            </div>
-        </div>
-    </div> 
-    );
-}
- 
+  const movies = ["Princess Bride", "Iron Man", "Pulp Fiction", "Enders Game"];
+  const movieItems = movies.map((movie) => (
+    <MovieItem key={movie} title={movie} />
+  ));
+  return (
+    <div className="flex-item">
+      <h4>My Movies</h4>
+      <div className="infoText">{movieItems}</div>
+    </div>
+  );
+};
+
 export default MovieList;

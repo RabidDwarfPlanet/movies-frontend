@@ -1,0 +1,27 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.flex-container{
+    display: flex;
+    padding: 20px 50px;
+    gap: 20px;
+}
+
+.flex-item{
+    margin: 2%;
+    flex: 1;
+    background-color: whitesmoke;
+}
+
+h4{
+    padding: 2%;
+    background-color: lightblue;
+}
+.infoText{
+    padding: 2%;
+}

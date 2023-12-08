@@ -1,11 +1,22 @@
 import "./App.css";
 import Header from "./componants/Header/Header.jsx";
 import MovieList from "./componants/MovieList/MovieList.jsx";
+import MovieInfo from "./componants/MovieInfo/MovieInfo.jsx";
 
 function App() {
+  const selectedMovie = {
+    title:'Princess Bride',
+    runningTime:13, 
+    genre:'Romantic Genre'
+  };
+
   return <div className="App">
     <Header/>
-    <MovieList/>
+    <div className="flex-container">
+      <MovieList/>
+      <MovieInfo movieObj={selectedMovie}/>
+    </div>
+    
   </div>
 }
 

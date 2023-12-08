@@ -3,8 +3,22 @@ import Header from "./componants/Header/Header.jsx";
 import MovieList from "./componants/MovieList/MovieList.jsx";
 import MovieInfo from "./componants/MovieInfo/MovieInfo.jsx";
 import NewMovieForm from "./componants/NewMovieForm/NewMovieForm.jsx";
+import React, { useState, useEffect } from 'react';
+import initData from "./data/data.js";
+
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    setMovies(initData)
+  }, [])
+  
+  const handleNewMovie = (newMovie) => {
+    const updatedMovies = [...movies, newMovie]
+    setMovies(updatedMovies)
+  }
+
   const selectedMovie = {
     title: "Princess Bride",
     runningTime: 13,
@@ -15,9 +29,9 @@ function App() {
     <div className="App">
       <Header />
       <div className="flex-container">
-        <MovieList />
+        <MovieList movies={movies}/>
         <MovieInfo movieObj={selectedMovie} />
-        <NewMovieForm />
+        <NewMovieForm onNewMovie={handleNewMovie}/>
       </div>
     </div>
   );

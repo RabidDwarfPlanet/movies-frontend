@@ -1,9 +1,8 @@
 import MovieItem from "../MovieItem/MovieItem";
 
-const MovieList = ({}) => {
-  const movies = ["Princess Bride", "Iron Man", "Pulp Fiction", "Enders Game"];
+const MovieList = ({movies = []}) => {
   const MovieItems = movies.map((movie) => (
-    <MovieItem key={movie} title={movie} />
+    <MovieItem key={movie.title} title={movie.title} />
   ));
   return (
     <div className="flex-item">

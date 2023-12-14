@@ -1,21 +1,29 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-const NewMovieForm = ({onNewMovie}) => {
+const NewMovieForm = ({ onNewMovie }) => {
   const [title, setTitle] = useState("");
   const [runningTime, setRunningTime] = useState("");
   const [genre, setGenre] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const formData = {
-        title,
-        runningTime,
-        genre
-    }
-    
-    onNewMovie(formData)
-  }
+      title,
+      runningTime,
+      genre,
+    };
 
+    try {
+      const responce = await axios.post(
+        "https://localhost:7151/api/Movies",
+        formData
+      );
+      if (responce.status === 201) onNewMovie(responce);
+    } catch (error) {
+      console.warn("Error submitting new movie form: ", error);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="flex-item">
@@ -28,7 +36,9 @@ const NewMovieForm = ({onNewMovie}) => {
       <div>
         <label>Running Time</label>
         <br />
-        <input value={runningTime} onChange={(e) => setRunningTime(e.target.value)}
+        <input
+          value={runningTime}
+          onChange={(e) => setRunningTime(e.target.value)}
         />
       </div>
       <div>

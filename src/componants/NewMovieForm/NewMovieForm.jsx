@@ -19,7 +19,7 @@ const NewMovieForm = ({ onNewMovie }) => {
         "https://localhost:7151/api/Movies",
         formData
       );
-      if (responce.status === 201) onNewMovie(responce);
+      if (responce.status === 201) onNewMovie();
     } catch (error) {
       console.warn("Error submitting new movie form: ", error);
     }
@@ -46,7 +46,9 @@ const NewMovieForm = ({ onNewMovie }) => {
         <br />
         <input value={genre} onChange={(e) => setGenre(e.target.value)} />
       </div>
-      <button type="submit">Add Movie</button>
+      <div className="d-flex justify-content-end">
+      <button type="submit" className="btn btn-primary">Add Movie</button>
+      </div>
     </form>
   );
 };
